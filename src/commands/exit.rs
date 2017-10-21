@@ -1,5 +1,5 @@
 use super::ExitCode;
 
-pub fn exit() -> ExitCode {
-    ExitCode::Exit
+pub fn exit() -> (ExitCode, String) {
+    (ExitCode::Exit, String::from(""))
 }

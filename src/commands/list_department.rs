@@ -1,24 +1,24 @@
 use super::ExitCode;
 use directory::Directory;
 
-pub fn list_department(department: String, directory: &mut Directory) -> ExitCode {
+pub fn list_department(department: String, directory: &mut Directory) -> (ExitCode, String) {
     match directory.departments.get_mut(&department) {
         Some(names) => {
             names.sort_unstable();
 
-            println!("The {} department includes:", department);
+            let mut message = format!("The {} department includes:\n", department);
 
             for name in names {
-                println!("    {}", name);
+                message = format!("{}    {}\n", message, name);
             }
 
-            ExitCode::Continue
+            (ExitCode::Continue, message)
         },
 
         None => {
-            println!("There are no people in the {} department", department);
+            let message = format!("There are no people in the {} department\n", department);
 
-            ExitCode::Continue
+            (ExitCode::Continue, message)
         },
     }
 }

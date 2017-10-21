@@ -21,7 +21,9 @@ fn main() {
             .expect("Failed to read line");
 
         let command = parse_input(input);
-        let exit_code = command.execute(&mut directory);
+        let (exit_code, message) = command.execute(&mut directory);
+
+        print!("{}", message);
 
         if let ExitCode::Exit = exit_code {
             break;

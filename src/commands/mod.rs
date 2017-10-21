@@ -21,7 +21,7 @@ pub enum Command {
 }
 
 impl Command {
-    pub fn execute(&self, mut directory: &mut Directory) -> ExitCode {
+    pub fn execute(&self, mut directory: &mut Directory) -> (ExitCode, String) {
         match self {
             &Command::AddUser(ref user, ref dept) => add_user(user.clone(), dept.clone(), &mut directory),
             &Command::ListDepartment(ref dept) => list_department(dept.clone(), &mut directory),
