@@ -1,0 +1,6 @@
+[package]
+name = "company_directory"
+version = "0.1.0"
+authors = ["Chris Bywater <chrisbywater@gmail.com>"]
+
+[dependencies]
